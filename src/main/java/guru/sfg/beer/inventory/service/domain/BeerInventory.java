@@ -21,7 +21,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
+
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-public class BeerInventory extends BaseEntity{
+public class BeerInventory extends BaseEntity {
 
     @Builder
     public BeerInventory(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, UUID beerId,
