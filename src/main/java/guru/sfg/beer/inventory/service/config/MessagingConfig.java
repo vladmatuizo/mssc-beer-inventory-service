@@ -13,6 +13,7 @@ public class MessagingConfig {
     public static final String NEW_INVENTORY_QUEUE_NAME = "new-inventory";
     public static final String ALLOCATE_ORDER_QUEUE_NAME = "allocate-order";
     public static final String ALLOCATE_ORDER_RESPONSE_QUEUE_NAME = "allocate-order-response";
+    public static final String DEALLOCATE_ORDER_QUEUE_NAME = "deallocate-order";
 
 
     @Bean

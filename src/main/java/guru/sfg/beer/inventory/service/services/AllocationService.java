@@ -5,4 +5,5 @@ import com.example.common.model.BeerOrderDto;
 public interface AllocationService {
 
     boolean allocateOrder(BeerOrderDto beerOrder);
+    void deallocateOrder(BeerOrderDto beerOrder);
 }

@@ -42,6 +42,20 @@ public class SimpleAllocationService implements AllocationService {
         return totalOrderedValue == totalAllocatedValue;
     }
 
+    @Override
+    public void deallocateOrder(BeerOrderDto beerOrder) {
+        beerOrder.getBeerOrderLines().forEach(beerOrderLine -> {
+            BeerInventory savedInventory = beerInventoryRepository.save(
+                    BeerInventory.builder()
+                            .beerId(beerOrderLine.getBeerId())
+                            .upc(beerOrderLine.getUpc())
+                            .quantityOnHand(beerOrderLine.getQuantityAllocated())
+                            .build());
+            log.debug("Completed inventory deallocation (id: {}) for beer upc {}, ",
+                    savedInventory.getId(), savedInventory.getUpc());
+        });
+    }
+
     private void allocateBeerOrderLine(BeerOrderLineDto beerOrderLine) {
         List<BeerInventory> beerInventories = beerInventoryRepository.findAllByUpc(beerOrderLine.getUpc());
 
