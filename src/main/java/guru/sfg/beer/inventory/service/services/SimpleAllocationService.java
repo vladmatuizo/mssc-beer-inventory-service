@@ -76,7 +76,9 @@ public class SimpleAllocationService implements AllocationService {
                 //partial allocation
                 beerOrderLine.setQuantityAllocated(allocatedQuantity + inventory);
                 beerInventory.setQuantityOnHand(0);
+            }
 
+            if (beerInventory.getQuantityOnHand() == 0) {
                 beerInventoryRepository.delete(beerInventory);
             }
         });

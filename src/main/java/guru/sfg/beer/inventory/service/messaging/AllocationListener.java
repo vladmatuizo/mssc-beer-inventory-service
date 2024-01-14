@@ -30,6 +30,7 @@ public class AllocationListener {
         try {
             boolean orderIsAllocated = allocationService.allocateOrder(beerOrder);
             builder.pendingInventory(!orderIsAllocated);
+            builder.allocationError(false);
         } catch (Exception e) {
             log.error("Allocation error for beer order {}, message: {}", beerOrder.getId().toString(), e.getMessage());
             builder.allocationError(true);
